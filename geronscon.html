@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        height: 100%;
+        width: 100%;
+      }
+      /* По умолчанию — красный (ПК, большие экраны) */
+      body {
+        background-color: red;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* Телефоны и планшеты — синий */
+      @media (max-width: 768px) {
+        body {
+          background-color: blue;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="label">Экран красный — это ПК</h1>
+  </body>
+
+  <script>
+    // Дополнительно меняет подпись в зависимости от ширины экрана
+    const label = document.getElementById('label');
+    if (window.innerWidth <= 768) {
+      label.textContent = 'Экран синий — это телефон';
+    }
+    window.addEventListener('resize', () => {
+      label.textContent = window.innerWidth <= 768
+        ? 'Экран синий — это телефон'
+        : 'Экран красный — это ПК';
+    });
+  </script>
+</html>
